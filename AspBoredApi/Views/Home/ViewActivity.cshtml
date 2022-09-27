@@ -1,0 +1,39 @@
+﻿@model ActivityProperties
+
+<div class="card-body align-content-center ">
+
+   
+       <div class="text-center font">
+    <h1 class="display-4 font">Bored Panda</h1>
+    <p>Life is never boring, but some people choose to be bored..</p>
+    </div>
+  
+
+
+
+       <div class="text-center font">
+    <h2>Random Activity: @Model.Activity</h2>
+
+    </div>
+
+
+ 
+      
+     <div class="text-center">
+        <button onclick="window.location.reload();" class="btn btn-outline-secondary my-3 text-fancy semi-circle text-center font" >Load new activity</button>
+    </div>
+
+    <audio hidden controls autoplay loop>
+
+    <source src="~/1-12 Song of Storms.mp3" type="audio/mpeg"/>
+
+
+</audio> 
+
+
+    
+
+  <!-- <div class="text-center">
+     <img class="img-fluid "  src="~/output-onlinegiftools (3).gif"/>
+    </div> -->
+</div>
