@@ -1,0 +1,70 @@
+﻿@model FinalProject
+
+<div class="card-body align-content-center ">
+
+
+   pm.test("Status code is 200", function () {
+    pm.response.to.have.status(200);
+});
+
+pm.test("Response body contains data", function () {
+    pm.response.to.be.ok;
+});var template = `
+<style type="text/css">
+    .tftable {font-size:14px;color:#333333;width:100%;border-width: 1px;border-color: #87ceeb;border-collapse: collapse;}
+    .tftable th {font-size:18px;background-color:#87ceeb;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;text-align:left;}
+    .tftable tr {background-color:#ffffff;}
+    .tftable td {font-size:14px;border-width: 1px;padding: 8px;border-style: solid;border-color: #87ceeb;}
+    .tftable tr:hover {background-color:#e0ffff;}
+</style>
+
+<table class="tftable" border="1">
+    <tr>
+        <th>Strain</th>
+        <th>THC</th>
+        <th>CBD</th>
+        <th>CBG</th>
+        <th>Strain Type</th>
+        <th>Climate</th>
+        <th>Difficulty</th>
+        <th>Fungal Resistance</th>
+        <th>Indoor Yield (grams)</th>
+        <th>Outdoor Yield (grams)</th>
+        <th>Flowering Weeks (Min)</th>
+        <th>Flowering Weeks (Max)</th>
+        <th>Height (Inches) (Min)</th>
+        <th>Height (Inches) (Max)</th>
+        <th>Good Effects</th>
+        <th>Side Effects</th>
+        <th>Image</th>
+    </tr>
+    
+    {{#each response}}
+        <tr>
+            <td>{{strain}}</td>
+            <td>{{thc}}</td>
+            <td>{{cbd}}</td>
+            <td>{{cbg}}</td>
+            <td>{{strainType}}</td>
+            <td>{{climate}}</td>
+            <td>{{difficulty}}</td>
+            <td>{{fungalResistance}}</td>
+            <td>{{indoorYieldInGramsMax}}</td>
+            <td>{{outdoorYieldInGramsMax}}</td>
+            <td>{{floweringWeeksMin}}</td>
+            <td>{{floweringWeeksMax}}</td>
+            <td>{{heightInInchesMin}}</td>
+            <td>{{heightInInchesMax}}</td>
+            <td>{{goodEffects}}</td>
+            <td>{{sideEffects}}</td>
+            <td><img src="{{imgThumb}}" alt="{{strain}}" width="100" height="100"></td>
+        </tr>
+    {{/each}}
+</table>
+`;
+
+function constructVisualizerPayload() {
+    return { response: pm.response.json() }
+}
+
+pm.visualizer.set(template, constructVisualizerPayload());
