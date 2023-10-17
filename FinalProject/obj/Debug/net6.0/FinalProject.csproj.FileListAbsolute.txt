@@ -32,3 +32,5 @@ C:\Users\jared\OneDrive\Desktop\repos\FinalProject\FinalProject\obj\Debug\net6.0
 C:\Users\jared\OneDrive\Desktop\repos\FinalProject\FinalProject\obj\Debug\net6.0\ref\FinalProject.dll
 C:\Users\jared\OneDrive\Desktop\repos\FinalProject\FinalProject\obj\Debug\net6.0\FinalProject.RazorAssemblyInfo.cache
 C:\Users\jared\OneDrive\Desktop\repos\FinalProject\FinalProject\obj\Debug\net6.0\FinalProject.RazorAssemblyInfo.cs
+C:\Users\jared\OneDrive\Desktop\repos\FinalProject\FinalProject\bin\Debug\net6.0\FinalProject.staticwebassets.runtime.json
+C:\Users\jared\OneDrive\Desktop\repos\FinalProject\FinalProject\bin\Debug\net6.0\Newtonsoft.Json.dll

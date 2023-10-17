@@ -2,57 +2,41 @@ using Microsoft.AspNetCore.Mvc;
 using System;
 using System.Net.Http;
 using System.Threading.Tasks;
-using FinalProject;
 
-namespace YourNamespace.Controllers
+public class WeedStrainController : Controller
 {
-    [Route("api/[controller]")]
-    [ApiController]
-    public class ExternalApiController : ControllerBase
+    public IActionResult Index()
     {
-        private readonly IHttpClientFactory _clientFactory;
+        return View();
+    }
 
-        public ExternalApiController(IHttpClientFactory clientFactory)
+    public async Task<IActionResult> GetWeedStrainData()
+    {
+        var client = new HttpClient();
+        var request = new HttpRequestMessage
         {
-            _clientFactory = clientFactory;
-        }
-
-        [HttpGet]
-        public async Task<IActionResult> Get()
-        {
-            // Define the URL of the external API
-            var apiUrl = "https://weed-strain1.p.rapidapi.com/";
-
-            try
+            Method = HttpMethod.Get,
+            RequestUri = new Uri("https://weed-strain1.p.rapidapi.com/"),
+            Headers =
             {
-                // Create an HTTP client
-                var client = _clientFactory.CreateClient();
+                { "X-RapidAPI-Key", "a173573224msh0d90e570559d8dfp11d60bjsn0d424b4bbfcb" },
+                { "X-RapidAPI-Host", "weed-strain1.p.rapidapi.com" },
+            },
+        };
 
-                // Set the base URL
-                client.BaseAddress = new Uri(apiUrl);
+        using (var response = await client.SendAsync(request))
+        {
+            if (response.IsSuccessStatusCode)
+            {
+                var body = await response.Content.ReadAsStringAsync();
 
-                // Add headers
-                client.DefaultRequestHeaders.Add("X-RapidAPI-Key", "a173573224msh0d90e570559d8dfp11d60bjsn0d424b4bbfcb");
-                client.DefaultRequestHeaders.Add("X-RapidAPI-Host", "weed-strain1.p.rapidapi.com");
-
-                // Make the GET request
-                var response = await client.GetAsync("");
-
-                if (response.IsSuccessStatusCode)
-                {
-                    var data = await response.Content.ReadAsStringAsync();
-                    return Ok(data);
-                }
-                else
-                {
-                    // Handle errors
-                    return StatusCode((int)response.StatusCode, "Error fetching data from the external API.");
-                }
+                // You can process the response data if needed
+                // For now, just return a View
+                return View();
             }
-            catch (Exception ex)
+            else
             {
-                // Handle any exceptions that may occur during the request
-                return StatusCode(500, "An error occurred: " + ex.Message);
+                return StatusCode((int)response.StatusCode);
             }
         }
     }

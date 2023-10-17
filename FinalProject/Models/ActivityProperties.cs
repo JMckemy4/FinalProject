@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 namespace FinalProject.Models
 {
-    public class AcitivityProperties
+    public class ActivityProperties
     {
         public string? Strain { get; set; }
         public double THC { get; set; }
