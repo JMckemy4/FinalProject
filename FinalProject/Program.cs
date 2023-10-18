@@ -20,7 +20,7 @@ namespace FinalProject
             Host.CreateDefaultBuilder(args)
                 .ConfigureWebHostDefaults(webBuilder =>
                 {
-                    webBuilder.UseStartup<Strains>();
+                    webBuilder.UseStartup<Startup>();
                 });
     }
 }

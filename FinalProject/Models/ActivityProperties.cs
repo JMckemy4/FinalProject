@@ -1,6 +1,4 @@
 ﻿using FinalProject;
-using System;
-using System.Collections.Generic;
 
 namespace FinalProject.Models
 {
@@ -25,7 +23,7 @@ namespace FinalProject.Models
         public string? GoodEffects { get; set; }
         public string? SideEffects { get; set; }
         public string? Image { get; set; }
-        public string? Activity { get; internal set; }
-        public string? Type { get; internal set; }
+        public string? Activity { get; set; } 
+        public string? Type { get; set; }    
     }
 }

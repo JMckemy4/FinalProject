@@ -3,41 +3,47 @@ using System;
 using System.Net.Http;
 using System.Threading.Tasks;
 
-public class WeedStrainController : Controller
+namespace FinalProject
 {
-    public IActionResult Index()
+    public class WeedStrainsController : Controller
     {
-        return View();
-    }
+        private readonly IHttpClientFactory _httpClientFactory;
 
-    public async Task<IActionResult> GetWeedStrainData()
-    {
-        var client = new HttpClient();
-        var request = new HttpRequestMessage
+        public WeedStrainsController(IHttpClientFactory httpClientFactory)
         {
-            Method = HttpMethod.Get,
-            RequestUri = new Uri("https://weed-strain1.p.rapidapi.com/"),
-            Headers =
-            {
-                { "X-RapidAPI-Key", "a173573224msh0d90e570559d8dfp11d60bjsn0d424b4bbfcb" },
-                { "X-RapidAPI-Host", "weed-strain1.p.rapidapi.com" },
-            },
-        };
+            _httpClientFactory = httpClientFactory;
+        }
 
-        using (var response = await client.SendAsync(request))
+        public async Task<IActionResult> YourAction()
         {
-            if (response.IsSuccessStatusCode)
-            {
-                var body = await response.Content.ReadAsStringAsync();
+            var client1 = _httpClientFactory.CreateClient("RapidAPI1");
+            var client2 = _httpClientFactory.CreateClient("RapidAPI2");
+            var client3 = _httpClientFactory.CreateClient("RapidAPI3");
+            var client4 = _httpClientFactory.CreateClient("RapidAPI4");
+            var client5 = _httpClientFactory.CreateClient("RapidAPI5");
 
-                // You can process the response data if needed
-                // For now, just return a View
-                return View();
-            }
-            else
+            
+            var request5 = new HttpRequestMessage
             {
-                return StatusCode((int)response.StatusCode);
-            }
+                Method = HttpMethod.Get,
+                RequestUri = new Uri("https://weed-strain1.p.rapidapi.com/")
+            };
+
+            //using (var response5 = await client5.SendAsync(request5))
+            //{
+            //    response5.EnsureSuccessStatusCode();
+            //    var body5 = await response5.Content.ReadAsStringAsync();
+            //    Console.WriteLine(body5);
+            //}
+
+            var response5 = await client5.SendAsync(request5);
+            
+                response5.EnsureSuccessStatusCode();
+                var body5 = await response5.Content.ReadAsStringAsync();
+                Console.WriteLine(body5);
+            
+
+            return View(body5);
         }
     }
 }
