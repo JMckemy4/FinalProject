@@ -2,12 +2,12 @@
 
 namespace FinalProject.Models
 {
-    public class ActivityProperties
+    public class ViewStrains
     {
         public string? Strain { get; set; }
-        public double THC { get; set; }
-        public double CBD { get; set; }
-        public double CBG { get; set; }
+        public string THC { get; set; }
+        public string CBD { get; set; }
+        public string CBG { get; set; }
         public string? StrainType { get; set; }
         public string? Climate { get; set; }
         public string? Difficulty { get; set; }
@@ -23,7 +23,7 @@ namespace FinalProject.Models
         public string? GoodEffects { get; set; }
         public string? SideEffects { get; set; }
         public string? Image { get; set; }
-        public string? Activity { get; set; } 
-        public string? Type { get; set; }    
+        public string? Activity { get; set; }
+        public string? Type { get; set; }
     }
 }

@@ -1,11 +1,11 @@
-﻿using System;
-using System.Net.Http;
-using System.Net.Http.Headers;
-using System.Threading.Tasks;
+﻿using FinalProject;
+using FinalProject.Models;
+using Newtonsoft.Json.Linq;
+
 
 public class ApiCall
 {
-    public static async Task<string?> GetApiResponse()
+    public static List<ViewStrains> GetApiResponse()
     {
         using (var client = new HttpClient())
         {
@@ -14,20 +14,39 @@ public class ApiCall
 
             var requestUri = "https://weed-strain1.p.rapidapi.com/";
 
-            try
-            {
-                using (var response = await client.GetAsync(requestUri))
+           
+                var response = client.GetStringAsync(requestUri).Result;
+
+                JArray formattedResponse = JArray.Parse(response);
+                List<ViewStrains> strains = new List<ViewStrains>();
+
+                //formattedResponse[0]["strain"];
+
+                for (int i = 0; i <= 10; i++)
                 {
-                    response.EnsureSuccessStatusCode();
-                    return await response.Content.ReadAsStringAsync();
+                    string strainName = formattedResponse[i]["strain"].ToString();
+                    string thc = formattedResponse[i]["thc"].ToString();
+
+                ViewStrains strain = new ViewStrains
+                {
+                    Strain = strainName,
+                    THC = thc
+                   
+                   
+                
+                
+                };
+               
+                    strains.Add(strain);
                 }
-            }
-            catch (HttpRequestException ex)
-            {
-                Console.WriteLine($"HTTP Request Error: {ex.Message}");
-                return null;
+
+                return strains;
+                
+
+
+
             }
         }
     }
-}
+
 
