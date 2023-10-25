@@ -5,9 +5,9 @@ namespace FinalProject.Models
     public class ViewStrains
     {
         public string? Strain { get; set; }
-        public string THC { get; set; }
-        public string CBD { get; set; }
-        public string CBG { get; set; }
+        public string? THC { get; set; }
+        public string? CBD { get; set; }
+        public string? CBG { get; set; }
         public string? StrainType { get; set; }
         public string? Climate { get; set; }
         public string? Difficulty { get; set; }

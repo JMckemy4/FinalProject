@@ -8,7 +8,7 @@ namespace FinalProject
 {
     public class WeedStrainsController : Controller
     {
-        public async Task<IActionResult> Index()
+        public IActionResult Index()
         {
             var strains = ApiCall.GetApiResponse();
             return View(strains);

@@ -1,7 +1,7 @@
 ﻿using FinalProject;
 using FinalProject.Models;
 using Newtonsoft.Json.Linq;
-
+using System.Diagnostics;
 
 public class ApiCall
 {
@@ -14,39 +14,51 @@ public class ApiCall
 
             var requestUri = "https://weed-strain1.p.rapidapi.com/";
 
-           
-                var response = client.GetStringAsync(requestUri).Result;
 
-                JArray formattedResponse = JArray.Parse(response);
-                List<ViewStrains> strains = new List<ViewStrains>();
+            var response = client.GetStringAsync(requestUri).Result;
 
-                //formattedResponse[0]["strain"];
+            JArray formattedResponse = JArray.Parse(response);
+            List<ViewStrains> strains = new List<ViewStrains>();
 
-                for (int i = 0; i <= 10; i++)
-                {
-                    string strainName = formattedResponse[i]["strain"].ToString();
-                    string thc = formattedResponse[i]["thc"].ToString();
+
+
+            for (int i = 0; i <= 50; i++)
+            {
+                string strainName = formattedResponse[i]["strain"].ToString();
+                string thc = formattedResponse[i]["thc"].ToString();
+                string cbd = formattedResponse[i]["cbd"].ToString();
+                string cbg = formattedResponse[i]["cbg"].ToString();
+                string Straintype = formattedResponse[i]["strainType"].ToString();
+                string climate = formattedResponse[i]["climate"].ToString();
+                string difficulty = formattedResponse[i]["difficulty"].ToString();
+                string fungalResistance = formattedResponse[i]["fungalResistance"].ToString();
+                string Goodeffects = formattedResponse[i]["goodEffects"].ToString();
+                string Sideeffects = formattedResponse[i]["sideEffects"].ToString();
+                string Types = formattedResponse[i]["types"]?.ToString();
+                string? Images = formattedResponse[i]["images"]?.ToString();
 
                 ViewStrains strain = new ViewStrains
                 {
                     Strain = strainName,
-                    THC = thc
-                   
-                   
-                
-                
+                    THC = thc,
+                    CBD = cbd,
+                    CBG = cbg,
+                    StrainType = Straintype,
+                    Climate = climate,
+                    Difficulty = difficulty,
+                    FungalResistance = fungalResistance,
+                    GoodEffects = Goodeffects,
+                    SideEffects = Sideeffects,
+                    Image = Images,
+                    Type = Types,
                 };
-               
-                    strains.Add(strain);
-                }
 
-                return strains;
-                
-
-
-
+                strains.Add(strain);
             }
+
+            return strains;
         }
     }
+}
 
 

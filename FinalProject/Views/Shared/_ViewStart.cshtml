@@ -2,19 +2,50 @@
     Layout = "_Layout";
 }
 <!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <title>Fetch API Example</title>
+    <style>
+        body {
+            background-color: black; /* Set the background color to black */
+            color: white; /* Set the text color to white */
+            font-family: Arial, sans-serif; /* Set the font family */
+        }
+
+        h1 {
+            font-style: italic; /* Add cursive style to the header */
+        }
+    </style>
 </head>
 <body>
     <h1>Fetch API Example</h1>
 
-    
     <button id="getDataButton">Get Data from API</button>
 
-    
     <div id="apiData"></div>
 
-    <script src="your-javascript-file.js"></script>
+    <script>
+        // Your JavaScript code here
+        const getDataButton = document.getElementById("getDataButton");
+
+        getDataButton.addEventListener("click", () => {
+            fetch('https://weed-strain1.p.rapidapi.com/')
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
+                .then(data => {
+                    // Display data in the "apiData" div
+                    const apiDataElement = document.getElementById('apiData');
+                    apiDataElement.textContent = JSON.stringify(data, null, 2);
+                })
+                .catch(error => {
+                    console.error('There was a problem with the network request:', error);
+                });
+        });
+    </script>
 </body>
 </html>

@@ -1,86 +1,45 @@
-﻿/* Please see documentation at https://docs.microsoft.com/aspnet/core/client-side/bundling-and-minification
-for details on configuring this project to bundle and minify static web assets. */
-
-a.navbar-brand {
-    white-space: normal;
-    text-align: center;
-    word-break: break-all;
+﻿/* Apply styles to the header */
+h1 {
+    color: white; /* Text color */
 }
 
-/* Provide sufficient contrast against white background */
-a {
-    color: #0366d6;
-}
-
-.btn-primary {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
-}
-
-.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-    color: #fff;
-    background-color: #1b6ec2;
-    border-color: #1861ac;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-    font-size: 14px;
-}
-
-@media (min-width: 768px) {
-    html {
-        font-size: 16px;
-    }
-}
-
-.border-top {
-    border-top: 1px solid #e5e5e5;
-}
-
-.border-bottom {
-    border-bottom: 1px solid #e5e5e5;
-}
-
-.box-shadow {
-    box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
-}
-
-button.accept-policy {
-    font-size: 1rem;
-    line-height: inherit;
-}
-
-/* Sticky footer styles
--------------------------------------------------- */
-html {
-    position: relative;
-    min-height: 100%;
-}
-
+/* Set the black background */
 body {
-    /* Margin bottom by footer height */
-    margin-bottom: 60px;
-    background-image: url('image_processing20210519-8184-1h9ntux.gif');
+    background-color: black; /* Background color */
+}
+
+/* Style the background image */
+.background_image {
+    background-image: url('your-image-path.jpg'); /* Add your image path here */
     background-size: cover;
-    background-repeat: no-repeat;
-    opacity: 0.6; /* 60% opacity */
+    height: 400px; /* Set the height as needed */
 }
 
-.footer {
-    position: absolute;
-    bottom: 0;
+/* Center align text and change font */
+.text-center {
+    text-align: center;
+    font-family: Arial, sans-serif;
+}
+
+/* Style the Botanica Premium Services heading */
+.display-4 {
+    font-size: 3rem; /* Increase the font size for emphasis */
+    color: white; /* Change to white for cursive writing */
+    font-style: italic; /* Add cursive style */
+}
+
+progress {
     width: 100%;
-    white-space: nowrap;
-    line-height: 60px; /* Vertically center the text there */
+    height: 20px;
+    background-color: black; /* Background color */
 }
 
+    /* Style the progress bar value */
+    progress::-webkit-progress-value {
+        background-color: #0066cc; /* Change to your preferred color */
+    }
 
-
-.font {
-    font-family: 'Botanica Premimum Services', cursive;
-    color: yellow;
-    font: bolder xx-large;
+/* Style the label for "Fun Times Loading" */
+label {
+    color: white; /* Text color */
 }
